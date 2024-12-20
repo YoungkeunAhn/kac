@@ -1,10 +1,10 @@
 <script>
-import _ from 'lodash'
-import moment from 'moment'
-import 'moment/locale/ko'
-import Button from 'primevue/button'
+import _ from "lodash"
+import moment from "moment"
+import "moment/locale/ko"
+import Button from "primevue/button"
 
-moment.locale('ko')
+moment.locale("ko")
 
 export default {
   data() {
@@ -12,306 +12,306 @@ export default {
       now: new Date(),
       viewerMenu: [
         {
-          title: '조업사 차량',
+          title: "조업사 차량",
           items: [
-            { name: 'KAS', value: true },
-            { name: 'AAP', value: false },
-            { name: 'JAS', value: true },
-            { name: 'ATS', value: false },
-            { name: 'SAK', value: false },
-            { name: 'GAA', value: false },
+            { name: "KAS", value: true },
+            { name: "AAP", value: false },
+            { name: "JAS", value: true },
+            { name: "ATS", value: false },
+            { name: "SAK", value: false },
+            { name: "GAA", value: false },
           ],
         },
         {
-          title: '구역보기',
+          title: "구역보기",
           items: [
-            { name: '탑승교 주의', value: true },
-            { name: '항공기 주의', value: false },
-            { name: '사고위험 주의', value: true },
-            { name: '속도위반', value: false },
-            { name: '저시정 구역', value: false },
-            { name: '과속위험 지역', value: false },
+            { name: "탑승교 주의", value: true },
+            { name: "항공기 주의", value: false },
+            { name: "사고위험 주의", value: true },
+            { name: "속도위반", value: false },
+            { name: "저시정 구역", value: false },
+            { name: "과속위험 지역", value: false },
           ],
         },
         {
-          title: '항공기',
-          items: [{ name: '위치 보이기 주의', value: true }],
+          title: "항공기",
+          items: [{ name: "위치 보이기 주의", value: true }],
         },
         {
-          title: '위험지역',
+          title: "위험지역",
           items: [
-            { name: '과속 위험', value: true },
-            { name: '사고 위험', value: true },
-            { name: '기타 위험', value: true },
+            { name: "과속 위험", value: true },
+            { name: "사고 위험", value: true },
+            { name: "기타 위험", value: true },
           ],
         },
         {
-          title: '사고지역',
+          title: "사고지역",
           items: [
-            { name: '항공기 사고', value: true },
-            { name: '차량 사고', value: true },
-            { name: '시성물 사고', value: true },
+            { name: "항공기 사고", value: true },
+            { name: "차량 사고", value: true },
+            { name: "시성물 사고", value: true },
           ],
         },
         {
-          title: '항공기 점유율',
-          items: [{ name: '점유율 보이기', value: true }],
+          title: "항공기 점유율",
+          items: [{ name: "점유율 보이기", value: true }],
         },
         {
-          title: '항공기 경로',
-          items: [{ name: '경로 보이기', value: true }],
+          title: "항공기 경로",
+          items: [{ name: "경로 보이기", value: true }],
         },
       ],
       countsData: [
         {
-          title: '조업',
-          color: '#2bc95c',
+          title: "조업",
+          color: "#2bc95c",
           count: 159,
         },
         {
-          title: '주의',
-          color: '#c9aa2b',
+          title: "주의",
+          color: "#c9aa2b",
           count: 1,
         },
         {
-          title: '위험',
-          color: '#c98c2b',
+          title: "위험",
+          color: "#c98c2b",
           count: 5,
         },
         {
-          title: '긴급',
-          color: '#c9562b',
+          title: "긴급",
+          color: "#c9562b",
           count: 2,
         },
         {
-          title: '사고',
-          color: '#c92b2b',
+          title: "사고",
+          color: "#c92b2b",
           count: 1,
         },
       ],
       environmentData: [
         {
-          caption: '2분평균',
-          subject: '풍향/풍속',
-          value: '200/4',
+          caption: "2분평균",
+          subject: "풍향/풍속",
+          value: "200/4",
         },
         {
-          caption: '좌측1분 평균',
-          subject: 'RVR',
-          value: 'P2000',
+          caption: "좌측1분 평균",
+          subject: "RVR",
+          value: "P2000",
         },
         {
-          caption: '좌측1분 평균',
-          subject: 'MOR',
-          value: '10000',
+          caption: "좌측1분 평균",
+          subject: "MOR",
+          value: "10000",
         },
         {
-          caption: '일산화탄소',
-          subject: '1시간 평균',
-          value: '1.9ppm',
+          caption: "일산화탄소",
+          subject: "1시간 평균",
+          value: "1.9ppm",
         },
         {
-          caption: '일산화탄소',
-          subject: '24시간 평균',
-          value: '0.8ppm',
+          caption: "일산화탄소",
+          subject: "24시간 평균",
+          value: "0.8ppm",
         },
       ],
       environmentIssues: [
         {
-          type: '긴급',
-          color: '#c92b2b',
-          port: '여수공항',
-          content: '급변풍 (08.06 16 : 22~ 08.06 18:00 KST)',
+          type: "긴급",
+          color: "#c92b2b",
+          port: "여수공항",
+          content: "급변풍 (08.06 16 : 22~ 08.06 18:00 KST)",
         },
         {
-          type: '긴급',
-          color: '#c92b2b',
-          port: '제주공항',
-          content: '급변풍 (08.06 16 : 22~ 08.06 18:00 KST)',
+          type: "긴급",
+          color: "#c92b2b",
+          port: "제주공항",
+          content: "급변풍 (08.06 16 : 22~ 08.06 18:00 KST)",
         },
       ],
       drivingStats: {
-        date: '2024.07.25',
+        date: "2024.07.25",
         data: [
           {
-            subject: '운행율',
-            value: '95%',
+            subject: "운행율",
+            value: "95%",
           },
           {
-            subject: '안전 운행 평균 지수',
-            value: '98',
+            subject: "안전 운행 평균 지수",
+            value: "98",
           },
           {
-            subject: '차량단말기',
-            value: '1000',
+            subject: "차량단말기",
+            value: "1000",
           },
           {
-            subject: '조업자 앱 사용율',
-            value: '95%',
+            subject: "조업자 앱 사용율",
+            value: "95%",
           },
           {
-            subject: '신규등록 요청',
-            value: '5',
+            subject: "신규등록 요청",
+            value: "5",
           },
         ],
       },
       drivingStatsIssues: [
         {
-          type: '긴급',
-          color: '#c62b2e',
+          type: "긴급",
+          color: "#c62b2e",
           content:
-            '공항기상 레이더 (TDWR) 정기(월간) 점검이 있습니다. 다음과 날짜와 시간을 필히 확인…',
-          created_at: '24.07.24 06:10:33',
+            "공항기상 레이더 (TDWR) 정기(월간) 점검이 있습니다. 다음과 날짜와 시간을 필히 확인…",
+          created_at: "24.07.24 06:10:33",
         },
         {
-          type: '공지',
-          color: '#82818d',
-          content: '조업사 안전 업무강화 실시',
-          created_at: '24.07.24 06:10:33',
+          type: "공지",
+          color: "#82818d",
+          content: "조업사 안전 업무강화 실시",
+          created_at: "24.07.24 06:10:33",
         },
       ],
       driveLog: {
-        title: '차량운행 현황',
+        title: "차량운행 현황",
         tableHeaders: [
-          { headerName: '조업사', field: 'company' },
-          { headerName: '조업자', field: 'name' },
-          { headerName: '배차차량', field: 'vehicle' },
-          { headerName: '배차시간', field: 'dispatchTime' },
-          { headerName: '차량위치', field: 'vehicleLocation' },
-          { headerName: '연결상태', field: 'connectionStatus' },
-          { headerName: '차량속도', field: 'speed' },
-          { headerName: '알람', field: 'alarm' },
-          { headerName: '상태', field: 'status' },
+          { headerName: "조업사", field: "company" },
+          { headerName: "조업자", field: "name" },
+          { headerName: "배차차량", field: "vehicle" },
+          { headerName: "배차시간", field: "dispatchTime" },
+          { headerName: "차량위치", field: "vehicleLocation" },
+          { headerName: "연결상태", field: "connectionStatus" },
+          { headerName: "차량속도", field: "speed" },
+          { headerName: "알람", field: "alarm" },
+          { headerName: "상태", field: "status" },
         ],
         data: [
           {
-            company: '제주에어',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업중',
+            company: "제주에어",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업중",
           },
           {
-            company: '케이에이',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '속도위반',
-            status: '강제정지',
+            company: "케이에이",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "속도위반",
+            status: "강제정지",
           },
           {
-            company: '한국공항',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업중',
+            company: "한국공항",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업중",
           },
           {
-            company: '티웨이에어',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업중',
+            company: "티웨이에어",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업중",
           },
           {
-            company: '스위스포트',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업중',
+            company: "스위스포트",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업중",
           },
           {
-            company: '고암에이스',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업중',
+            company: "고암에이스",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업중",
           },
           {
-            company: '케이에이',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업중',
+            company: "케이에이",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업중",
           },
           {
-            company: '티웨이에어',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업중',
+            company: "티웨이에어",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업중",
           },
           {
-            company: '스위스포트',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업종료',
+            company: "스위스포트",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업종료",
           },
           {
-            company: '고암에이스',
-            name: '김조업',
-            vehicle: '스켑카(01)',
-            dispatchTime: '6:20',
-            vehicleLocation: '37탑승교',
-            connectionStatus: '양호',
-            speed: '30km/h',
-            alarm: '전송중',
-            status: '조업종료',
+            company: "고암에이스",
+            name: "김조업",
+            vehicle: "스켑카(01)",
+            dispatchTime: "6:20",
+            vehicleLocation: "37탑승교",
+            connectionStatus: "양호",
+            speed: "30km/h",
+            alarm: "전송중",
+            status: "조업종료",
           },
         ],
       },
       driveLogSearchOptions: [
-        { name: '전체', value: '_' },
-        { name: '에어코리아', value: '에어코리아' },
-        { name: '케이에이', value: '케이에이' },
-        { name: '제주에어', value: '제주에어' },
-        { name: '티웨이', value: '티웨이' },
-        { name: '이스타포트', value: '이스타포트' },
-        { name: '고암에이스', value: '고암에이스' },
-        { name: '샤프', value: '샤프' },
+        { name: "전체", value: "_" },
+        { name: "에어코리아", value: "에어코리아" },
+        { name: "케이에이", value: "케이에이" },
+        { name: "제주에어", value: "제주에어" },
+        { name: "티웨이", value: "티웨이" },
+        { name: "이스타포트", value: "이스타포트" },
+        { name: "고암에이스", value: "고암에이스" },
+        { name: "샤프", value: "샤프" },
       ],
-      driveLogSearchValue: '_',
+      driveLogSearchValue: "_",
     }
   },
   methods: {
     formatNow(date) {
-      return moment().locale('ko').format('YYYY.MM.DD(ddd) HH:mm:ss')
+      return moment().locale("ko").format("YYYY.MM.DD(ddd) HH:mm:ss")
     },
     formatDate(date, format) {
       return moment(date).format(format)
@@ -402,7 +402,7 @@ export default {
 
         <section class="drive-status">
           <div class="text-white date">
-            {{ formatDate(drivingStats.date, 'YYYY.MM.DD') }} 기준
+            {{ formatDate(drivingStats.date, "YYYY.MM.DD") }} 기준
           </div>
           <div class="wrap">
             <div
@@ -568,11 +568,9 @@ nav {
 }
 
 .counts {
-  display: flex;
-
-  & > div + div {
-    margin-left: 1.25rem;
-  }
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
 
   .info {
     display: flex;
@@ -619,7 +617,7 @@ nav {
   }
 
   .subject {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
   }
 
@@ -631,11 +629,9 @@ nav {
 
 .environment {
   .wrap {
-    display: flex;
-  }
-
-  .item + .item {
-    margin-left: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.25rem;
   }
 
   .badge {
@@ -670,7 +666,7 @@ nav {
     }
 
     .content {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       letter-spacing: -0.72px;
       color: #fff;
     }
