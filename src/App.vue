@@ -178,10 +178,122 @@ export default {
           { headerName: '배차차량', field: 'vehicle' },
           { headerName: '배차시간', field: 'dispatchTime' },
           { headerName: '차량위치', field: 'vehicleLocation' },
-          { headerName: '연결상태', field: 'connection_status' },
+          { headerName: '연결상태', field: 'connectionStatus' },
           { headerName: '차량속도', field: 'speed' },
           { headerName: '알람', field: 'alarm' },
           { headerName: '상태', field: 'status' },
+        ],
+        data: [
+          {
+            company: '제주에어',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업중',
+          },
+          {
+            company: '케이에이',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '속도위반',
+            status: '강제정지',
+          },
+          {
+            company: '한국공항',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업중',
+          },
+          {
+            company: '티웨이에어',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업중',
+          },
+          {
+            company: '스위스포트',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업중',
+          },
+          {
+            company: '고암에이스',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업중',
+          },
+          {
+            company: '케이에이',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업중',
+          },
+          {
+            company: '티웨이에어',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업중',
+          },
+          {
+            company: '스위스포트',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업종료',
+          },
+          {
+            company: '고암에이스',
+            name: '김조업',
+            vehicle: '스켑카(01)',
+            dispatchTime: '6:20',
+            vehicleLocation: '37탑승교',
+            connectionStatus: '양호',
+            speed: '30km/h',
+            alarm: '전송중',
+            status: '조업종료',
+          },
         ],
       },
       driveLogSearchOptions: [
@@ -200,6 +312,9 @@ export default {
   methods: {
     formatNow(date) {
       return moment().locale('ko').format('YYYY.MM.DD(ddd) HH:mm:ss')
+    },
+    formatDate(date, format) {
+      return moment(date).format(format)
     },
   },
 }
@@ -249,29 +364,97 @@ export default {
 
         <section class="environment">
           <div class="wrap">
-            <div class="weather item">
+            <div class="weather item content-item-box">
               <img src="./assets/images/ic-rain.png" alt="" />
               <div>기온 26.2</div>
               <div>습도 99.9</div>
             </div>
-            <div v-for="item in environmentData" class="item">
+            <div v-for="item in environmentData" class="item content-item-box">
               <div class="caption">{{ item.caption }}</div>
               <div class="subject">{{ item.subject }}</div>
               <div class="value">{{ item.value }}</div>
             </div>
           </div>
           <div class="issue-wrap">
-            <div v-for="issue in environmentIssues" class="issue-box">
-              <div class="badge" :style="{ backgroundColor: issue.color }">
-                {{ issue.type }}
+            <div class="issue-box">
+              <div
+                class="badge"
+                :style="{ backgroundColor: environmentIssues[0].color }"
+              >
+                {{ environmentIssues[0].type }}
               </div>
-              <div class="content">{{ issue.content }}</div>
+              <div class="content">{{ environmentIssues[0].content }}</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="issue-box">
+              <div
+                class="badge"
+                :style="{ backgroundColor: environmentIssues[0].color }"
+              >
+                {{ environmentIssues[0].type }}
+              </div>
+              <div class="content">{{ environmentIssues[0].content }}</div>
             </div>
           </div>
         </section>
 
-        <section class="drive-status"></section>
-        <section class="table"></section>
+        <section class="drive-status">
+          <div class="text-white date">
+            {{ formatDate(drivingStats.date, 'YYYY.MM.DD') }} 기준
+          </div>
+          <div class="wrap">
+            <div
+              v-for="item in drivingStats.data"
+              class="item content-item-box"
+            >
+              <div class="caption">{{ item.caption }}</div>
+              <div class="subject">{{ item.subject }}</div>
+              <div class="value">{{ item.value }}</div>
+            </div>
+          </div>
+
+          <div class="issue-wrap">
+            <div v-for="issue in drivingStatsIssues" class="issue">
+              <span class="type" :style="{ backgroundColor: issue.color }">{{
+                issue.type
+              }}</span>
+              <div class="content">{{ issue.content }}</div>
+              <span class="caption">{{ issue.created_at }}</span>
+            </div>
+          </div>
+        </section>
+        <section class="tables">
+          <div class="btn-line flex">
+            <Button label="차량운행 현황" />
+            <Button label="Ads-B 정보" />
+            <Button label="항공 스케줄" />
+            <Button label="알림목록" />
+            <Button>
+              <img src="./assets/icons/ic-refresh-time.svg" alt="" />
+            </Button>
+          </div>
+
+          <Tabs :value="driveLogSearchValue">
+            <TabList>
+              <Tab v-for="tab in driveLogSearchOptions" :value="tab.value">{{
+                tab.name
+              }}</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel v-for="tab in driveLogSearchOptions" :value="tab.value">
+                <DataTable :value="driveLog.data">
+                  <Column
+                    v-for="col in driveLog.tableHeaders"
+                    :header="col.headerName"
+                    :field="col.field"
+                  />
+                </DataTable>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </section>
       </div>
     </main>
   </div>
@@ -407,26 +590,20 @@ nav {
   }
 }
 
-.environment {
-  .wrap {
-    display: flex;
-  }
+.content-item-box {
+  padding: 1.425rem 2.111rem 1.125rem 2.111rem;
+  border-radius: 20px;
+  background-color: #263761;
+  color: #fff;
 
-  .item {
-    padding: 1.425rem 2.111rem 1.125rem 2.111rem;
-    border-radius: 20px;
-    background-color: #263761;
-    color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  font-size: 1.25rem;
 
-    font-size: 1.25rem;
-  }
-
-  .item + .item {
+  & + & {
     margin-left: 1.25rem;
   }
 
@@ -450,33 +627,138 @@ nav {
     font-size: 2.375rem;
     font-weight: 500;
   }
+}
+
+.environment {
+  .wrap {
+    display: flex;
+  }
+
+  .item + .item {
+    margin-left: 1.25rem;
+  }
 
   .badge {
     margin-right: 0.75rem;
   }
-}
 
-.issue-wrap {
-  height: 5.5rem;
-}
+  .issue-wrap {
+    height: 5.5rem;
 
-.issue-box {
-  display: flex;
-  align-items: center;
-
-  .badge {
-    padding: 0.375rem 0.313rem 0.313rem;
-    border-radius: 5px;
-    margin-right: 0.625rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .content {
-    font-size: 1.5rem;
-    letter-spacing: -0.72px;
-    color: #fff;
+  .divider {
+    border-right: 1px solid #766626;
+    width: 0px;
+    height: 1.5rem;
   }
+
+  .issue-box {
+    display: flex;
+    align-items: center;
+
+    .badge {
+      padding: 0.375rem 0.313rem 0.313rem;
+      border-radius: 5px;
+      margin-right: 0.625rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .content {
+      font-size: 1.5rem;
+      letter-spacing: -0.72px;
+      color: #fff;
+    }
+  }
+}
+
+.text-white {
+  color: #fff;
+}
+
+.drive-status {
+  .date {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+
+  .wrap {
+    display: flex;
+  }
+
+  .issue-wrap {
+    margin-top: 2.5rem;
+  }
+
+  .issue {
+    display: flex;
+    align-items: center;
+    color: #fff;
+
+    & + & {
+      margin-top: 1rem;
+    }
+
+    .type {
+      border-radius: 5px;
+      height: 2rem;
+      font-size: 1.125rem;
+      font-weight: 500;
+      padding: 0.125rem 0.375rem 0.188rem;
+      margin-right: 0.625rem;
+    }
+
+    .content {
+      flex: 1;
+      font-size: 1.5rem;
+      margin-right: 0.875rem;
+    }
+
+    .caption {
+      font-size: 1.125rem;
+      font-weight: normal;
+      color: #82818d;
+    }
+  }
+}
+
+.p-tab {
+  font-size: 1.438rem;
+  font-weight: bold;
+  color: #fff;
+}
+.p-tab.p-tab-active {
+  color: #c9aa2b;
+  border-color: #c9aa2b;
+}
+.p-tablist-tab-list {
+  background: transparent;
+}
+.p-tabpanels {
+  background: transparent;
+}
+:deep(.p-datatable-header-cell) {
+  background-color: #514823;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+:deep(.p-datatable-tbody > tr) {
+  background: transparent;
+  color: #fff;
+
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.22px;
+}
+:deep(.p-datatable-tbody > tr > td),
+:deep(.p-datatable-header-cell) {
+  border-color: transparent;
 }
 </style>

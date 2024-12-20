@@ -1,5 +1,9 @@
 @import './base.css';
 
+html {
+  font-size: 14px;
+}
+
 body {
   padding: 1.563rem 1.563rem 1.875rem;
   background-color: #222;
