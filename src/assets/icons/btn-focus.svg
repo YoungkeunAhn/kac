@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <path data-name="패스 15803" d="M16.071 4.3a1.111 1.111 0 0 1 0 2.223H6.516v9.556a1.111 1.111 0 1 1-2.223 0V5.408A1.112 1.112 0 0 1 5.4 4.3z" transform="translate(-4.293 -4.295)" style="fill:#c9aa2b;fill-rule:evenodd"/>
+    <path data-name="패스 15804" d="M85.91 16.071a1.111 1.111 0 1 1-2.223 0V6.516h-9.556a1.111 1.111 0 1 1 0-2.223H84.8A1.112 1.112 0 0 1 85.91 5.4z" transform="translate(-37.912 -4.293)" style="fill:#c9aa2b;fill-rule:evenodd"/>
+    <path data-name="패스 15805" d="M74.135 85.91a1.111 1.111 0 0 1 0-2.223h9.556v-9.556a1.111 1.111 0 0 1 2.223 0V84.8a1.112 1.112 0 0 1-1.114 1.11z" transform="translate(-37.914 -37.912)" style="fill:#c9aa2b;fill-rule:evenodd"/>
+    <path data-name="패스 15806" d="M4.3 74.135a1.111 1.111 0 0 1 2.223 0v9.556h9.556a1.111 1.111 0 0 1 0 2.223H5.408A1.112 1.112 0 0 1 4.3 84.8z" transform="translate(-4.295 -37.914)" style="fill:#c9aa2b;fill-rule:evenodd"/>
+    <path data-name="패스 15807" d="M52.182 43.122a9.06 9.06 0 1 1-9.06-9.06 9.06 9.06 0 0 1 9.06 9.06" transform="translate(-19.123 -19.123)" style="fill:#c9aa2b;fill-rule:evenodd"/>
+</svg>
