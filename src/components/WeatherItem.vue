@@ -45,7 +45,7 @@ export default {
 }
 
 .weather-img-wrap {
-  width: 50px;
+  width: 3.125rem;
 }
 .weather-values {
   font-size: 0.9rem;

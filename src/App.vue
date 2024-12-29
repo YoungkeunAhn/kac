@@ -7,7 +7,7 @@ import MapTopMenu from './components/MapTopMenu.vue'
 import StatusCountBox from './components/StatusCountBox.vue'
 import WeatherItem from './components/WeatherItem.vue'
 import DriveStatusItem from './components/DriveStatusItem.vue'
-import MainButton from './components/MainButton.vue'
+import TableTopButton from './components/TableTopButton.vue'
 
 moment.locale('ko')
 
@@ -522,13 +522,13 @@ export default {
         <section class="tables">
           <div class="btn-line flex">
             <div>
-              <MainButton label="차량운행 현황" />
-              <MainButton label="Ads-B 정보" />
-              <MainButton label="항공 스케줄" />
-              <MainButton label="알림목록" />
+              <TableTopButton label="차량운행 현황" />
+              <TableTopButton label="Ads-B 정보" />
+              <TableTopButton label="항공 스케줄" />
+              <TableTopButton label="알림목록" />
             </div>
 
-            <Button text class="icon-btn">
+            <Button text class="icon-btn" style="height: 3.75rem">
               <img
                 src="./assets/icons/ic-refresh-time.svg"
                 alt=""
@@ -928,10 +928,13 @@ main {
   }
   :deep(.p-tab-active) {
     color: #c9aa2b;
-    border-color: #c9aa2b;
   }
   :deep(.p-tablist-tab-list) {
     background: transparent;
+    justify-content: space-around;
+  }
+  :deep(.p-tablist-active-bar) {
+    background-color: #c9aa2b;
   }
   .p-tabpanels {
     background: transparent;
@@ -955,13 +958,23 @@ main {
     letter-spacing: -0.22px;
   }
 
+  :deep(.p-datatable-column-title) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    padding: 1rem 0px;
+  }
   :deep(.p-datatable-tbody > tr > td),
   :deep(.p-datatable-header-cell) {
     border-color: transparent;
     text-align: center;
 
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 1.375rem;
+    font-weight: 500;
+  }
+  :deep(.p-datatable.p-datatable-sm .p-datatable-tbody > tr > td) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
 </style>
